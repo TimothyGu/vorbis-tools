@@ -1,0 +1,792 @@
+<!-- Creator     : groff version 1.22.1 -->
+<!-- CreationDate: Tue Oct 22 17:56:00 2013 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="Content-Style" content="text/css">
+<style type="text/css">
+       p       { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       pre     { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       table   { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       h1      { text-align: center }
+</style>
+<title>ogg123 Documentation (Man Page)</title>
+
+</head>
+<body>
+
+<h1 align="center">ogg123 Documentation (ogg123(1) Man Page)</h1>
+
+<a href="#NAME">NAME</a><br>
+<a href="#SYNOPSIS">SYNOPSIS</a><br>
+<a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#OPTIONS">OPTIONS</a><br>
+<a href="#DEVICES">DEVICES</a><br>
+<a href="#EXAMPLES">EXAMPLES</a><br>
+<a href="#INTERRUPT">INTERRUPT</a><br>
+<a href="#FILES">FILES</a><br>
+<a href="#BUGS">BUGS</a><br>
+<a href="#AUTHORS">AUTHORS</a><br>
+<a href="#SEE ALSO">SEE ALSO</a><br>
+
+<hr>
+
+
+<h2>NAME
+<a name="NAME"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">ogg123 &minus;
+plays Ogg Vorbis files</p>
+
+<h2>SYNOPSIS
+<a name="SYNOPSIS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>ogg123</b> [
+<b>-vqrzZVh</b> ] [ <b>-k</b> <i>seconds</i> ] [ <b>-x</b>
+<i>nth</i> ] [ <b>-y</b> <i>ntimes</i> ] [ <b>-b</b>
+<i>buffer_size</i> ] [ <b>-d</b> <i>driver</i> [ <b>-o</b>
+<i>option:value</i> ] [ <b>-f</b> <i>filename</i> ] ]
+<i>file</i> <b>...</b> | <i>directory</i> <b>...</b> |
+<i>URL</i> <b>...</b></p>
+
+<h2>DESCRIPTION
+<a name="DESCRIPTION"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>ogg123</b>
+reads Ogg Vorbis audio files and decodes them to the devices
+specified on the command line. By default, <b>ogg123</b>
+writes to the standard sound device, but output can be sent
+to any number of devices. Files can be read from the file
+system, or URLs can be streamed via HTTP. If a directory is
+given, all of the files in it or its subdirectories will be
+played.</p>
+
+<h2>OPTIONS
+<a name="OPTIONS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">--audio-buffer
+n</p>
+
+<p style="margin-left:22%;">Use an output audio buffer of
+approximately &rsquo;n&rsquo; kilobytes.</p>
+
+<p style="margin-left:11%;">-@ playlist, --list
+playlist</p>
+
+<p style="margin-left:22%;">Play all of the files named in
+the file &rsquo;playlist&rsquo;. The playlist should have
+one filename, directory name, or URL per line. Blank lines
+are permitted. Directories will be treated in the same way
+as on the command line.</p>
+
+<p style="margin-left:11%;">-b n, --buffer n</p>
+
+<p style="margin-left:22%;">Use an input buffer of
+approximately &rsquo;n&rsquo; kilobytes. HTTP-only
+option.</p>
+
+<p style="margin-left:11%;">-p n, --prebuffer n</p>
+
+<p style="margin-left:22%;">Prebuffer &rsquo;n&rsquo;
+percent of the input buffer. Playback won&rsquo;t begin
+until this prebuffer is complete. HTTP-only option.</p>
+
+<p style="margin-left:11%;">-d device, --device device</p>
+
+<p style="margin-left:22%;">Specify output device. See
+<b>DEVICES</b> section for a list of devices. Any number of
+devices may be specified.</p>
+
+<p style="margin-left:11%;">-f filename, --file
+filename</p>
+
+<p style="margin-left:22%;">Specify output file for file
+devices. The filename &quot;-&quot; writes to standard out.
+If the file already exists, <b>ogg123</b> will overwrite
+it.</p>
+
+<p style="margin-left:11%;">-h, --help</p>
+
+<p style="margin-left:22%;">Show command help.</p>
+
+<p style="margin-left:11%;">-k n, --skip n</p>
+
+<p style="margin-left:22%;">Skip the first &rsquo;n&rsquo;
+seconds. &rsquo;n&rsquo; may also be in minutes:seconds or
+hours:minutes:seconds form.</p>
+
+<p style="margin-left:11%;">-K n, --end n</p>
+
+<p style="margin-left:22%;">Stops playing &rsquo;n&rsquo;
+seconds from the start of the stream. &rsquo;n&rsquo; may
+also have the same format as used in the <i>--skip</i>
+option.</p>
+
+<p style="margin-left:11%;">-o option[:value],
+--device-option option[:value]</p>
+
+<p style="margin-left:22%;">Sets the option <i>option</i>
+to <i>value</i> for the preceding device. See <b>DEVICES</b>
+for a list of valid options for each device.</p>
+
+<p style="margin-left:11%;">-q, --quiet</p>
+
+<p style="margin-left:22%;">Quiet mode. No messages are
+displayed.</p>
+
+<p style="margin-left:11%;">-V, --version</p>
+
+<p style="margin-left:22%;">Display version
+information.</p>
+
+<p style="margin-left:11%;">-v, --verbose</p>
+
+<p style="margin-left:22%;">Increase verbosity.</p>
+
+<p style="margin-left:11%;">-x n, --nth</p>
+
+<p style="margin-left:22%;">Play every &rsquo;n&rsquo;th
+decoded block. Has the effect of playing audio at
+&rsquo;n&rsquo; times faster than normal speed.</p>
+
+<p style="margin-left:11%;">-y n, --ntimes</p>
+
+<p style="margin-left:22%;">Repeat every played block
+&rsquo;n&rsquo; times. Has the effect of playing audio
+&rsquo;n&rsquo; times slower than normal speed. May be with
+-x for interesting fractional speeds.</p>
+
+<p style="margin-left:11%;">-r, --repeat</p>
+
+<p style="margin-left:22%;">Repeat playlist
+indefinitely.</p>
+
+<p style="margin-left:11%;">-z, --shuffle</p>
+
+<p style="margin-left:22%;">Play files in pseudo-random
+order.</p>
+
+<p style="margin-left:11%;">-Z, --random</p>
+
+<p style="margin-left:22%;">Play files in pseudo-random
+order forever.</p>
+
+<h2>DEVICES
+<a name="DEVICES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>ogg123</b>
+supports a variety of audio output devices through libao.
+Only those devices supported by the target platform will be
+available. The <b>-f</b> option may only be used with
+devices that write to files.</p>
+
+<p style="margin-left:11%; margin-top: 1em">Options
+supported by all devices:</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="22%"></td>
+<td width="7%">
+
+
+<p>debug</p></td>
+<td width="3%"></td>
+<td width="68%">
+
+
+<p>Turn on debugging output [if any] for a chosen
+driver.</p> </td></tr>
+</table>
+
+<p style="margin-left:22%;">matrix:value</p>
+
+<p style="margin-left:32%;">Force a specific output channel
+ordering for a given device. <i>value</i> is a comma
+seperated list of AO style channel names, eg,
+L,R,C,LFE,BL,BR,SL,SR.</p>
+
+<p style="margin-left:22%;">verbose</p>
+
+<p style="margin-left:32%;">Turn on verbose output for a
+chosen driver. the -v option will also set the driver
+verbose option.</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="18%">
+
+
+<p>quiet</p></td>
+<td width="3%"></td>
+<td width="68%">
+
+
+<p>Force chosen driver to be completely silent. Even errors
+will not produce any output. -q will also set the driver
+quiet option.</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="18%">
+
+
+<p><b>aixs</b></p></td>
+<td width="3%"></td>
+<td width="68%">
+</td></tr>
+</table>
+
+<p style="margin-left:22%; margin-top: 1em">AIX live output
+driver. Options: <br>
+dev:value</p>
+
+<p style="margin-left:32%;">Set AIX output device to
+<i>value</i></p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="6%">
+
+
+<p><b>alsa</b></p></td>
+<td width="5%"></td>
+<td width="78%">
+
+
+<p>Advanced Linux Sound Architecture live output driver.
+Options:</p> </td></tr>
+</table>
+
+<p style="margin-left:22%;">buffer_time:value</p>
+
+<p style="margin-left:32%;">Override the default hardware
+buffer size (in milliseconds).</p>
+
+<p style="margin-left:22%;">dev:value</p>
+
+<p style="margin-left:32%;">ALSA device label to use.
+Examples include &quot;hw:0&quot; for the first soundcard
+and &quot;hw:1&quot; for the second. The alsa driver
+normally chooses one of &quot;surround71&quot;,
+&quot;surround51&quot;, &quot;surround40&quot; or
+&quot;default&quot; automatically depending on number of
+output channels. For more information, see
+http://alsa.opensrc.org/ALSA+device+labels</p>
+
+<p style="margin-left:22%;">period_time:value</p>
+
+<p style="margin-left:32%;">Override the default hardware
+period size (in microseconds).</p>
+
+<p style="margin-left:22%;">period_time:value</p>
+
+<p style="margin-left:32%;">Override the default hardware
+period size (in microseconds).</p>
+
+<p style="margin-left:22%;">use_mmap:value</p>
+
+<p style="margin-left:32%;"><i>value</i> is set to
+&quot;yes&quot; or &quot;no&quot; to override the
+compiled-in default to use or not use mmap device access. In
+the past, some buggy alsa drivers have behaved better when
+not using mmap access at the penalty of slightly higher CPU
+usage.</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="6%">
+
+
+<p><b>arts</b></p></td>
+<td width="5%"></td>
+<td width="70%">
+
+
+<p>aRts Sound Daemon live output driver. Options:</p></td>
+<td width="8%">
+</td></tr>
+</table>
+
+<p style="margin-left:22%;">multi:value</p>
+
+<p style="margin-left:32%;"><i>value</i> is set to
+&quot;yes&quot; or &quot;no&quot; to allow opening the aRts
+playback device for multiply concurrent playback. Although
+the driver works properly in multi mode, it is known to
+occasionally crash the aRts server itself. Default behavior
+is &quot;no&quot;.</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="4%">
+
+
+<p><b>au</b></p></td>
+<td width="7%"></td>
+<td width="78%">
+
+
+<p>Sun audio file output. Writes the audio samples in AU
+format. The AU format supports writing to unseekable files
+like standard out. In such circumstances, the AU header will
+specify the sample format, but not the length of the
+recording.</p> </td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="4%">
+
+
+<p><b>esd</b></p></td>
+<td width="7%"></td>
+<td width="78%">
+
+
+<p>Enlightened Sound Daemon live output. Options:</p></td></tr>
+</table>
+
+<p style="margin-left:22%;">host:value</p>
+
+<p style="margin-left:32%;"><i>value</i> specifies the
+hostname where esd is running. This can include a port
+number after a colon, as in &quot;whizbang.com:555&quot;.
+(Default = localhost)</p>
+
+<p style="margin-left:22%;">client_name:value</p>
+
+<p style="margin-left:32%;">Sets the client name for the
+new audio stream. Defaults to &quot;libao client&quot;.</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="9%">
+
+
+<p><b>irix</b></p></td>
+<td width="2%"></td>
+<td width="78%">
+
+
+<p>IRIX live output audio driver.</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="9%">
+
+
+<p><b>macosx</b></p></td>
+<td width="2%"></td>
+<td width="78%">
+
+
+<p>MacOS X &rsquo;AUHAL&rsquo; live output driver. This
+driver supports MacOS X 10.5 and later (10.4 and earlier
+uses an earlier, incompatable interface). Options:</p></td></tr>
+</table>
+
+<p style="margin-left:22%;">buffer_time:value</p>
+
+<p style="margin-left:32%;">Set the hardware buffer size to
+the equivalent of <i>value</i> milliseconds.</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="4%">
+
+
+<p><b>nas</b></p></td>
+<td width="7%"></td>
+<td width="75%">
+
+
+<p>Network Audio Server live output driver. Options:</p></td>
+<td width="3%">
+</td></tr>
+</table>
+
+<p style="margin-left:22%;">buf_size:value</p>
+
+<p style="margin-left:32%;">Set size of audio buffer on
+server in bytes.</p>
+
+<p style="margin-left:22%;">host:value</p>
+
+<p style="margin-left:32%;">Set location of NAS server; See
+nas(1) for format.</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="6%">
+
+
+<p><b>null</b></p></td>
+<td width="5%"></td>
+<td width="78%">
+
+
+<p>Null driver. All audio data is discarded. (Note: Audio
+data is not written to <b>/dev/null</b> !) You could use
+this driver to test raw decoding speed without output
+overhead.</p> </td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="6%">
+
+
+<p><b>oss</b></p></td>
+<td width="5%"></td>
+<td width="78%">
+
+
+<p>Open Sound System driver for Linux and FreeBSD, versions
+2, 3 and 4. Options:</p></td></tr>
+</table>
+
+<p style="margin-left:22%;">dsp:value</p>
+
+<p style="margin-left:32%;">DSP device for soundcard.
+Defaults to <b>/dev/dsp.</b></p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="7%">
+
+
+<p><b>pulse</b></p></td>
+<td width="4%"></td>
+<td width="67%">
+
+
+<p>Pulseaudio live audio sound driver. Options:</p></td>
+<td width="11%">
+</td></tr>
+</table>
+
+<p style="margin-left:22%;">server:value</p>
+
+<p style="margin-left:32%;">Specifies location of remote or
+alternate Pulseaudio server.</p>
+
+<p style="margin-left:22%;">sink:value</p>
+
+<p style="margin-left:32%;">Specifies a non-default
+Pulseaudio sink for audio stream.</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="4%">
+
+
+<p><b>raw</b></p></td>
+<td width="7%"></td>
+<td width="78%">
+
+
+<p>Raw file output. Writes raw audio samples to a file.
+Options:</p> </td></tr>
+</table>
+
+<p style="margin-left:22%;">byteorder:value</p>
+
+<p style="margin-left:32%;">Chooses big endian
+(&quot;big&quot;), little endian (&quot;little&quot;), or
+native (&quot;native&quot;) byte order. Default is native
+order.</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="6%">
+
+
+<p><b>roar</b></p></td>
+<td width="5%"></td>
+<td width="69%">
+
+
+<p>RoarAudio Daemon live output driver. Options:</p></td>
+<td width="9%">
+</td></tr>
+</table>
+
+<p style="margin-left:22%;">server:value, host:value</p>
+
+<p style="margin-left:32%;">Specifies location of remote
+RoarAudio server to use.</p>
+
+<p style="margin-left:22%;">id:value, dev:value</p>
+
+<p style="margin-left:32%;">Specifies a non-default mixer
+within a RoarAudio server for audio stream.</p>
+
+<p style="margin-left:22%;">role:value</p>
+
+<p style="margin-left:32%;">Sets the role setting for the
+audio stream.</p>
+
+<p style="margin-left:22%;">client_name:value</p>
+
+<p style="margin-left:32%;">Sets the client name for the
+new audio stream. Defaults to &quot;libao client&quot;.</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="7%">
+
+
+<p><b>sndio</b></p></td>
+<td width="4%"></td>
+<td width="64%">
+
+
+<p>OpenBSD SNDIO live output driver. Options:</p></td>
+<td width="14%">
+</td></tr>
+</table>
+
+<p style="margin-left:22%;">dev:value</p>
+
+<p style="margin-left:32%;">Specifies audio device to use
+for playback.</p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="4%">
+
+
+<p><b>sun</b></p></td>
+<td width="7%"></td>
+<td width="78%">
+
+
+<p>Sun Audio live output driver for NetBSD, OpenBSD, and
+Solaris. Options:</p></td></tr>
+</table>
+
+<p style="margin-left:22%;">dev:value</p>
+
+<p style="margin-left:32%;">Audio device for soundcard.
+Defaults to <b>/dev/audio.</b></p>
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="4%">
+
+
+<p><b>wav</b></p></td>
+<td width="7%"></td>
+<td width="78%">
+
+
+<p>WAV file output. Writes the sound data to disk in
+uncompressed form. If multiple files are played, all of them
+will be concatenated into the same WAV file. WAV files
+cannot be written to unseekable files, such as standard out.
+Use the AU format instead.</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="4%">
+
+
+<p><b>wmm</b></p></td>
+<td width="7%"></td>
+<td width="78%">
+
+
+<p>Windows MultiMedia live output driver for Win98 and
+later. Options:</p></td></tr>
+</table>
+
+<p style="margin-left:22%;">dev:value</p>
+
+<p style="margin-left:32%;">Selects audio device to use for
+playback by device name.</p>
+
+<p style="margin-left:22%;">id:value</p>
+
+<p style="margin-left:32%;">Selects audio device to use for
+playback by device id (card number).</p>
+
+<h2>EXAMPLES
+<a name="EXAMPLES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">The
+<b>ogg123</b> command line is fairly flexible, perhaps
+confusingly so. Here are some sample command lines and an
+explanation of what they do.</p>
+
+<p style="margin-left:11%; margin-top: 1em">Play on the
+default soundcard:</p>
+
+<p style="margin-left:22%;"><b>ogg123 test.ogg</b></p>
+
+<p style="margin-left:11%; margin-top: 1em">Play all of the
+files in the directory ~/music and its subdirectories.</p>
+
+<p style="margin-left:22%;"><b>ogg123 ~/music</b></p>
+
+<p style="margin-left:11%; margin-top: 1em">Play a file
+using the OSS driver:</p>
+
+<p style="margin-left:22%;"><b>ogg123 -d oss
+test.ogg</b></p>
+
+<p style="margin-left:11%; margin-top: 1em">Pass the
+&quot;dsp&quot; option to the OSS driver:</p>
+
+<p style="margin-left:22%;"><b>ogg123 -d oss -o
+dsp:/dev/mydsp</b></p>
+
+<p style="margin-left:11%; margin-top: 1em">Use the ESD
+driver</p>
+
+<p style="margin-left:22%;"><b>ogg123 -d esd
+test.ogg</b></p>
+
+<p style="margin-left:11%; margin-top: 1em">Use the WAV
+driver with the output file, &quot;test.wav&quot;:</p>
+
+<p style="margin-left:22%;"><b>ogg123 -d wav -f test.wav
+test.ogg</b></p>
+
+<p style="margin-left:11%; margin-top: 1em">Listen to a
+file while you write it to a WAV file:</p>
+
+<p style="margin-left:22%;"><b>ogg123 -d oss -d wav -f
+test.wav test.ogg</b></p>
+
+<p style="margin-left:11%; margin-top: 1em">Note that
+options apply to the device declared to the left:</p>
+
+<p style="margin-left:22%;"><b>ogg123 -d oss -o
+dsp:/dev/mydsp -d raw -f test2.raw -o byteorder:big
+test.ogg</b></p>
+
+<p style="margin-left:11%; margin-top: 1em">Stress test
+your harddrive:</p>
+
+<p style="margin-left:22%;"><b>ogg123 -d oss -d wav -f
+1.wav -d wav -f 2.wav -d wav -f 3.wav -d wav -f 4.wav -d wav
+-f 5.wav test.ogg</b></p>
+
+<p style="margin-left:11%; margin-top: 1em">Create an echo
+effect with esd and a slow computer:</p>
+
+<p style="margin-left:22%;"><b>ogg123 -d esd -d esd
+test.ogg</b></p>
+
+<h2>INTERRUPT
+<a name="INTERRUPT"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">You can abort
+<b>ogg123</b> at any time by pressing Ctrl-C. If you are
+playing multiple files, this will stop the current file and
+begin playing the next one. If you want to abort playing
+immediately instead of skipping to the next file, press
+Ctrl-C within the first second of the playback of a new
+file.</p>
+
+<p style="margin-left:11%; margin-top: 1em">Note that the
+result of pressing Ctrl-C might not be audible immediately,
+due to audio data buffering in the audio device. This delay
+is system dependent, but it is usually not more than one or
+two seconds.</p>
+
+<h2>FILES
+<a name="FILES"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em">/etc/libao.conf</p>
+
+<p style="margin-left:22%;">Can be used to set the default
+output device for all libao programs.</p>
+
+<p style="margin-left:11%;">~/.libao</p>
+
+<p style="margin-left:22%;">Per-user config file to
+override the system wide output device settings.</p>
+
+<h2>BUGS
+<a name="BUGS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">Piped WAV files
+may cause strange behavior in other programs. This is
+because WAV files store the data length in the header.
+However, the output driver does not know the length when it
+writes the header, and there is no value that means
+&quot;length unknown&quot;. Use the raw or au output driver
+if you need to use ogg123 in a pipe.</p>
+
+<h2>AUTHORS
+<a name="AUTHORS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">Program
+Authors:</p>
+
+<p style="margin-left:22%;">Kenneth Arnold
+&lt;kcarnold-xiph@arnoldnet.net&gt; <br>
+Stan Seibert &lt;volsung@xiph.org&gt;</p>
+
+<p style="margin-left:11%;">Manpage Author:</p>
+
+<p style="margin-left:22%;">Stan Seibert
+&lt;volsung@xiph.org&gt;</p>
+
+<h2>SEE ALSO
+<a name="SEE ALSO"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>libao.conf</b>(5),
+<b>oggenc</b>(1), <b>vorbiscomment</b>(1),
+<b>ogginfo</b>(1)</p>
+<hr>
+</body>
+</html>

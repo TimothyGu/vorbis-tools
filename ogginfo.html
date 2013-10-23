@@ -1,0 +1,144 @@
+<!-- Creator     : groff version 1.22.1 -->
+<!-- CreationDate: Tue Oct 22 18:00:03 2013 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="Content-Style" content="text/css">
+<style type="text/css">
+       p       { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       pre     { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       table   { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       h1      { text-align: center }
+</style>
+<title>ogginfo Documentation (Man Page)</title>
+
+</head>
+<body>
+
+<h1 align="center">ogginfo Documentation (ogginfo(1) Man Page)</h1>
+
+<a href="#NAME">NAME</a><br>
+<a href="#SYNOPSIS">SYNOPSIS</a><br>
+<a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#OPTIONS">OPTIONS</a><br>
+<a href="#AUTHORS">AUTHORS</a><br>
+<a href="#SEE ALSO">SEE ALSO</a><br>
+
+<hr>
+
+
+<h2>NAME
+<a name="NAME"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">ogginfo &minus;
+gives information about Ogg files, and does extensive
+validity checking</p>
+
+<h2>SYNOPSIS
+<a name="SYNOPSIS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>ogginfo</b>
+[ <b>-q</b> ] [ <b>-v</b> ] [ <b>-h</b> ] <i>file1.ogg</i>
+<b>...</b> <i>fileN.ogg</i></p>
+
+<h2>DESCRIPTION
+<a name="DESCRIPTION"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><i><b>ogginfo</b></i>
+reads one or more Ogg files and prints information about
+stream contents (including chained and/or multiplexed
+streams) to standard output. It will detect (but not
+correct) a wide range of common defects, with many
+additional checks specifically for Ogg Vorbis streams.</p>
+
+<p style="margin-left:11%; margin-top: 1em">For all stream
+types <b>ogginfo</b> will print the filename being
+processed, the stream serial numbers, and various common
+error conditions.</p>
+
+<p style="margin-left:11%; margin-top: 1em">For
+<b>Vorbis</b> streams, information including the version
+used for encoding, the sample rate and number of channels,
+the bitrate and playback length, and the contents of the
+comment header are printed.</p>
+
+<p style="margin-left:11%; margin-top: 1em">Similarly, for
+<b>Theora</b> streams, basic information about the video is
+provided, including frame rate, aspect ratio, bitrate,
+length, and the comment header.</p>
+
+<h2>OPTIONS
+<a name="OPTIONS"></a>
+</h2>
+
+
+<table width="100%" border="0" rules="none" frame="void"
+       cellspacing="0" cellpadding="0">
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p style="margin-top: 1em">-h</p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p style="margin-top: 1em">Show a help and usage
+message.</p> </td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p>-q</p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p>Quiet mode. This may be specified multiple times. Doing
+so once will remove the detailed informative messages, twice
+will remove warnings as well.</p></td></tr>
+<tr valign="top" align="left">
+<td width="11%"></td>
+<td width="3%">
+
+
+<p>-v</p></td>
+<td width="8%"></td>
+<td width="78%">
+
+
+<p>Verbose mode. At the current time, this does not do
+anything.</p> </td></tr>
+</table>
+
+<h2>AUTHORS
+<a name="AUTHORS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">Michael Smith
+&lt;msmith@xiph.org&gt;</p>
+
+<h2>SEE ALSO
+<a name="SEE ALSO"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>vorbiscomment</b>(1),
+<b>ogg123</b>(1), <b>oggdec</b>(1), <b>oggenc</b>(1)</p>
+<hr>
+</body>
+</html>

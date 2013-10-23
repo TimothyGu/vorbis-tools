@@ -1,0 +1,218 @@
+<!-- Creator     : groff version 1.22.1 -->
+<!-- CreationDate: Tue Oct 22 18:01:42 2013 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="Content-Style" content="text/css">
+<style type="text/css">
+       p       { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       pre     { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       table   { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       h1      { text-align: center }
+</style>
+<title>vorbiscomment Documentation (Man Page)</title>
+
+</head>
+<body>
+
+<h1 align="center">vorbiscomment Documentation (vorbiscomment(1) Man Page)</h1>
+
+<a href="#NAME">NAME</a><br>
+<a href="#SYNOPSIS">SYNOPSIS</a><br>
+<a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#OPTIONS">OPTIONS</a><br>
+<a href="#EXAMPLES">EXAMPLES</a><br>
+<a href="#TAG FORMAT">TAG FORMAT</a><br>
+<a href="#AUTHORS">AUTHORS</a><br>
+<a href="#SEE ALSO">SEE ALSO</a><br>
+
+<hr>
+
+
+<h2>NAME
+<a name="NAME"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">vorbiscomment
+&minus; List or edit comments in Ogg Vorbis files</p>
+
+<h2>SYNOPSIS
+<a name="SYNOPSIS"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>vorbiscomment
+[-l]</b> [<b>-R</b>] [<b>-e</b>] <i>file.ogg</i> <b><br>
+vorbiscomment -a [ -c commentfile | -t
+&ldquo;name=value&rdquo; ]</b> [<b>-q</b>] [<b>-R</b>]
+[<b>-e</b>] <i>in.ogg [out.ogg]</i> <b><br>
+vorbiscomment -w [ -c commentfile | -t
+&ldquo;name=value&rdquo; ]</b> [<b>-q</b>] [<b>-R</b>]
+[<b>-e</b>] <i>in.ogg [out.ogg]</i></p>
+
+<h2>DESCRIPTION
+<a name="DESCRIPTION"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><i><b>vorbiscomment</b></i>
+Reads, modifies, and appends Ogg Vorbis audio file metadata
+tags.</p>
+
+<h2>OPTIONS
+<a name="OPTIONS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">-a,
+--append</p>
+
+<p style="margin-left:22%;">Append comments.</p>
+
+<p style="margin-left:11%;">-c file, --commentfile file</p>
+
+<p style="margin-left:22%;">Take comments from a file. The
+file is the same format as is output by the the -l option or
+given to the -t option: one element per line in
+&rsquo;tag=value&rsquo; format. If the file is /dev/null and
+-w was passed, the existing comments will be removed.</p>
+
+<p style="margin-left:11%;">-h, --help</p>
+
+<p style="margin-left:22%;">Show command help.</p>
+
+<p style="margin-left:11%;">-l, --list</p>
+
+<p style="margin-left:22%;">List the comments in the Ogg
+Vorbis file.</p>
+
+<p style="margin-left:11%;">-q, --quiet</p>
+
+<p style="margin-left:22%;">Quiet mode. No messages are
+displayed.</p>
+
+<p style="margin-left:11%;">-t &rsquo;name=value&rsquo;,
+--tag &rsquo;name=value&rsquo;</p>
+
+<p style="margin-left:22%;">Specify a new tag on the
+command line. Each tag is given as a single string. The part
+before the &rsquo;=&rsquo; is treated as the tag name and
+the part after as the value.</p>
+
+<p style="margin-left:11%;">-w, --write</p>
+
+<p style="margin-left:22%;">Replace comments with the new
+set given either on the command line with -t or from a file
+with -c. If neither -c nor -t is given, the new set will be
+read from the standard input.</p>
+
+<p style="margin-left:11%;">-R, --raw</p>
+
+<p style="margin-left:22%;">Read and write comments in
+UTF-8, rather than converting to the user&rsquo;s character
+set.</p>
+
+<p style="margin-left:11%;">-e, --escapes</p>
+
+<p style="margin-left:22%;">Quote/unquote newlines and
+backslashes in the comments. This ensures every comment is
+exactly one line in the output (or input), allowing to
+filter and round-trip them. Without it, you can only write
+multi-line comments by using -t and you can&rsquo;t reliably
+distinguish them from multiple one-line comments.</p>
+
+<p style="margin-left:22%; margin-top: 1em">Supported
+escapes are c-style &quot;\n&quot;, &quot;\r&quot;,
+&quot;\\&quot; and &quot;\0&quot;. A backslash followed by
+anything else is an error.</p>
+
+<p style="margin-left:22%; margin-top: 1em">Note:
+currently, anything after the first &quot;\0&quot; is thrown
+away while writing. This is a bug -- the Vorbis format can
+safely store null characters, but most other tools
+wouldn&rsquo;t handle them anyway.</p>
+
+<p style="margin-left:11%;">-V, --version</p>
+
+<p style="margin-left:22%;">Display the version of
+vorbiscomment.</p>
+
+<h2>EXAMPLES
+<a name="EXAMPLES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">To just see
+what comment tags are in a file:</p>
+
+<p style="margin-left:11%; margin-top: 1em">vorbiscomment
+-l file.ogg</p>
+
+<p style="margin-left:11%; margin-top: 1em">To edit those
+comments:</p>
+
+<p style="margin-left:11%; margin-top: 1em">vorbiscomment
+-l file.ogg &gt; file.txt <br>
+[edit the comments in file.txt to your satisfaction] <br>
+vorbiscomment -w -c file.txt file.ogg newfile.ogg</p>
+
+<p style="margin-left:11%; margin-top: 1em">To simply add a
+comment:</p>
+
+<p style="margin-left:11%; margin-top: 1em">vorbiscomment
+-a -t &rsquo;ARTIST=No One You Know&rsquo; file.ogg
+newfile.ogg</p>
+
+<p style="margin-left:11%; margin-top: 1em">To add a set of
+comments from the standard input:</p>
+
+<p style="margin-left:11%; margin-top: 1em">vorbiscomment
+-a file.ogg <br>
+ARTIST=No One You Know <br>
+ALBUM=The Famous Album <br>
+&lt;ctrl-d&gt;</p>
+
+<h2>TAG FORMAT
+<a name="TAG FORMAT"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">See
+http://xiph.org/vorbis/doc/v-comment.html for documentation
+on the Ogg Vorbis tag format, including a suggested list of
+canonical tag names.</p>
+
+<h2>AUTHORS
+<a name="AUTHORS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">Program
+Authors:</p>
+
+<p style="margin-left:22%;">Michael Smith
+&lt;msmith@xiph.org&gt; <br>
+Ralph Giles &lt;giles@xiph.org&gt;</p>
+
+<p style="margin-left:11%;">Manpage Author:</p>
+
+<p style="margin-left:22%;">Christopher L Cheney
+&lt;ccheney@debian.org&gt;</p>
+
+<h2>SEE ALSO
+<a name="SEE ALSO"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>oggenc</b>(1),
+<b>oggdec</b>(1), <b>ogg123</b>(1), <b>ogginfo</b>(1)</p>
+<hr>
+</body>
+</html>

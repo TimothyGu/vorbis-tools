@@ -1,0 +1,190 @@
+<!-- Creator     : groff version 1.22.1 -->
+<!-- CreationDate: Tue Oct 22 17:58:47 2013 -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta name="generator" content="groff -Thtml, see www.gnu.org">
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta name="Content-Style" content="text/css">
+<style type="text/css">
+       p       { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       pre     { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       table   { margin-top: 0; margin-bottom: 0; vertical-align: top }
+       h1      { text-align: center }
+</style>
+<title>oggdec Documentation (Man Page)</title>
+
+</head>
+<body>
+
+<h1 align="center">oggdec Documentation (oggdec(1) Man Page)</h1>
+
+<a href="#NAME">NAME</a><br>
+<a href="#SYNOPSIS">SYNOPSIS</a><br>
+<a href="#DESCRIPTION">DESCRIPTION</a><br>
+<a href="#OPTIONS">OPTIONS</a><br>
+<a href="#EXAMPLES">EXAMPLES</a><br>
+<a href="#AUTHORS">AUTHORS</a><br>
+<a href="#SEE ALSO">SEE ALSO</a><br>
+
+<hr>
+
+
+<h2>NAME
+<a name="NAME"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">oggdec - simple
+decoder, Ogg Vorbis file to PCM audio file (Wave or
+RAW).</p>
+
+<h2>SYNOPSIS
+<a name="SYNOPSIS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>oggdec</b> [
+<b>-Qhv</b> ] [ <b>-b bits_per_sample</b> ] [ <b>-e
+endianness</b> ] [ <b>-R</b> ] [ <b>-s signedness</b> ] [
+<b>-o outputfile</b> ] <b>file ...</b></p>
+
+<h2>DESCRIPTION
+<a name="DESCRIPTION"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>oggdec</b>
+decodes Ogg Vorbis files into PCM-encoded
+(&quot;uncompressed&quot;) audio files, either Wave or RAW
+format.</p>
+
+<p style="margin-left:11%; margin-top: 1em">For each input
+file, <b>oggdec</b> writes to a filename based on the input
+filename, but with the extension changed to &quot;.wav&quot;
+or &quot;.raw&quot; as appropriate.</p>
+
+<p style="margin-left:11%; margin-top: 1em">If the input
+file is specified as <b>-</b> , then <b>oggdec</b> will read
+from stdin, and write to stdout unless an output filename is
+specified. Likewise, an output filename of <b>-</b> will
+cause output to be to stdout.</p>
+
+<p style="margin-left:11%; margin-top: 1em">Writing Wave
+format to stdout is a bad idea. Wave requires a seekable
+medium for the header to be rewritten after all the data is
+written out; stdout is not seekable.</p>
+
+<h2>OPTIONS
+<a name="OPTIONS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">-Q, --quiet</p>
+
+<p style="margin-left:22%;">Suppresses program output.</p>
+
+<p style="margin-left:11%;">-h, --help</p>
+
+<p style="margin-left:22%;">Print help message.</p>
+
+<p style="margin-left:11%;">-V, --version</p>
+
+<p style="margin-left:22%;">Display version
+information.</p>
+
+<p style="margin-left:11%;">-b n, --bits=n</p>
+
+<p style="margin-left:22%;">Bits per sample. Valid values
+are 8 or 16.</p>
+
+<p style="margin-left:11%;">-e n, --endian=n</p>
+
+<p style="margin-left:22%;">Set endianness for 16-bit
+output. 0 (default) is little-endian (Intel byte order). 1
+is big-endian (sane byte order).</p>
+
+<p style="margin-left:11%;">-R, --raw</p>
+
+<p style="margin-left:22%;">Output in raw format. If not
+specified, writes Wave file (RIFF headers).</p>
+
+<p style="margin-left:11%;">-s n, --sign=n</p>
+
+<p style="margin-left:22%;">Set signedness for output. 0
+for unsigned, 1 (default) for signed.</p>
+
+<p style="margin-left:11%;">-o filename,
+--output=filename</p>
+
+<p style="margin-left:22%;">Write output to specified
+filename. This option is only valid if one input [file] is
+specified, or if raw mode is used.</p>
+
+<h2>EXAMPLES
+<a name="EXAMPLES"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em">Decode a file
+<b>enabler.ogg</b> to <b>enabler.wav</b> <br>
+as little-endian unsigned 16-bit (default options):</p>
+
+<p style="margin-left:22%;">oggdec enabler.ogg</p>
+
+<p style="margin-left:11%; margin-top: 1em">Decode a file
+<b>enabler.ogg</b> to <b>enabler.raw</b> as headerless
+little-endian unsigned 16-bit:</p>
+
+<p style="margin-left:22%;">oggdec --raw=1 enabler.ogg</p>
+
+<p style="margin-left:11%; margin-top: 1em">Decode
+<b>enabler.ogg</b> to <b>enabler.crazymonkey</b> as unsigned
+8-bit:</p>
+
+<p style="margin-left:22%;">oggdec -b 8 -s 0 -o
+enabler.crazymonkey enabler.ogg</p>
+
+<p style="margin-left:11%; margin-top: 1em">Decode
+<b>enabler.ogg</b> to <b>enabler.raw</b> as big-endian
+signed 16-bit (any of the following):</p>
+
+<p style="margin-left:22%;">oggdec -R -e 1 -b 16
+enabler.ogg <br>
+oggdec -R -e 1 -b 16 -o enabler.raw - &lt; enabler.ogg <br>
+oggdec -R -e 1 -b 16 - &lt; enabler.ogg &gt; enabler.raw</p>
+
+<p style="margin-left:11%; margin-top: 1em">Mass decoding
+(foo.ogg to foo.wav, bar.ogg to bar.wav, quux.ogg to
+quux.wav, etc.):</p>
+
+<p style="margin-left:22%;">oggdec *.ogg</p>
+
+<h2>AUTHORS
+<a name="AUTHORS"></a>
+</h2>
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>Program
+Authors</b> <br>
+Michael Smith &lt;msmith@xiph.org&gt;</p>
+
+<p style="margin-left:11%; margin-top: 1em"><b>Manpage
+Authors</b> <br>
+Frederick Lee &lt;phaethon@linux.ucla.edu&gt;, assisted by a
+few million monkeys armed with keyboards in
+irc://irc.openprojects.net/#vorbis</p>
+
+<h2>SEE ALSO
+<a name="SEE ALSO"></a>
+</h2>
+
+
+
+<p style="margin-left:11%; margin-top: 1em"><b>ogg123</b>(1),
+<b>oggenc</b>(1), <b>vorbiscomment</b>(1), <b>flac</b>(1),
+<b>speexdec</b>(1)</p>
+<hr>
+</body>
+</html>
